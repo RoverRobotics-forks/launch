@@ -17,6 +17,8 @@
 import logging
 from typing import Text
 
+from merge_args import merge_args
+
 from .emit_event import EmitEvent
 from ..events import Shutdown as ShutdownEvent
 from ..events.process import ProcessExited
@@ -28,6 +30,7 @@ _logger = logging.getLogger(name='launch')
 class Shutdown(EmitEvent):
     """Action that shuts down a launched system by emitting Shutdown when executed."""
 
+    @merge_args(EmitEvent.__init__)
     def __init__(self, *, reason: Text = 'reason not given', **kwargs):
         super().__init__(event=ShutdownEvent(reason=reason), **kwargs)
 

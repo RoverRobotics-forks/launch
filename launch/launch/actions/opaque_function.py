@@ -23,6 +23,8 @@ from typing import List
 from typing import Optional
 from typing import Text
 
+from merge_args import merge_args
+
 from ..action import Action
 from ..launch_context import LaunchContext
 from ..launch_description_entity import LaunchDescriptionEntity
@@ -45,7 +47,7 @@ class OpaqueFunction(Action):
             ...
 
     """
-
+    @merge_args(Action.__init__)
     def __init__(
         self, *,
         function: Callable,

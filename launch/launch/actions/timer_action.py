@@ -26,6 +26,7 @@ from typing import Text
 from typing import Tuple
 from typing import Union
 
+from merge_args import merge_args
 import launch.logging
 
 from .opaque_function import OpaqueFunction
@@ -53,6 +54,7 @@ class TimerAction(Action):
     All timers are "one-shot", in that they only fire one time and never again.
     """
 
+    @merge_args(Action.__init__)
     def __init__(
         self,
         *,

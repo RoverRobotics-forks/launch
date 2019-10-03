@@ -14,6 +14,8 @@
 
 """Module for the EmitEvent action."""
 
+from merge_args import merge_args
+
 from ..action import Action
 from ..event import Event
 from ..launch_context import LaunchContext
@@ -23,6 +25,7 @@ from ..utilities import is_a_subclass
 class EmitEvent(Action):
     """Action that emits an event when executed."""
 
+    @merge_args(Action.__init__)
     def __init__(self, *, event: Event, **kwargs) -> None:
         """Constructor."""
         super().__init__(**kwargs)

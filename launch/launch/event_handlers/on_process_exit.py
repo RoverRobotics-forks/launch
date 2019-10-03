@@ -23,6 +23,8 @@ from typing import Text
 from typing import TYPE_CHECKING
 from typing import Union
 
+from merge_args import merge_args
+
 from ..event import Event
 from ..event_handler import BaseEventHandler
 from ..events.process import ProcessExited
@@ -41,7 +43,7 @@ class OnProcessExit(BaseEventHandler):
     It may be configured to only handle the exiting of a specific action,
     or to handle all exited processes.
     """
-
+    @merge_args(BaseEventHandler.__init__)
     def __init__(
         self,
         *,

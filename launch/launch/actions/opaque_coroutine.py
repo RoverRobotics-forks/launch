@@ -24,6 +24,8 @@ from typing import List
 from typing import Optional
 from typing import Text
 
+from merge_args import merge_args
+
 from ..action import Action
 from ..event import Event
 from ..event_handlers import OnShutdown
@@ -61,6 +63,7 @@ class OpaqueCoroutine(Action):
     if ignore_context is True on construction.
     """
 
+    @merge_args(Action.__init__)
     def __init__(
         self, *,
         coroutine: Coroutine,

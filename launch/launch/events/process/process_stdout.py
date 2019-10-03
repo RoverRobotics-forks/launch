@@ -13,6 +13,7 @@
 # limitations under the License.
 
 """Module for ProcessStdout event."""
+from merge_args import merge_args
 
 from .process_io import ProcessIO
 

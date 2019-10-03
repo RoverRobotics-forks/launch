@@ -16,12 +16,14 @@
 
 import sys
 
+from merge_args import merge_args
+
 
 def with_per_logger_formatting(cls):
     """Add per logger formatting capabilities to the given logging.Handler."""
     class _trait(cls):
         """A logging.Handler subclass to enable per logger formatting."""
-
+        @merge_args(cls.__init__)
         def __init__(self, *args, **kwargs):
             super(_trait, self).__init__(*args, **kwargs)
             self._formatters = {}

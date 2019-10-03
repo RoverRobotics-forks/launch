@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from merge_args import merge_args
+
 import collections.abc
 from typing import Callable
 from typing import cast
@@ -57,6 +59,7 @@ class OnExecutionComplete(EventHandler):
         """Overload which takes a callable to handle completion."""
         ...
 
+    @merge_args(EventHandler.__init__)
     def __init__(self, *, target_action=None, on_completion, **kwargs) -> None:  # noqa: F811
         """Constructor."""
         from ..action import Action  # noqa

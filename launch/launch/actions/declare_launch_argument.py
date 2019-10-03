@@ -18,6 +18,7 @@ from typing import List
 from typing import Optional
 from typing import Text
 
+from merge_args import merge_args
 import launch.logging
 
 from ..action import Action
@@ -74,6 +75,7 @@ class DeclareLaunchArgument(Action):
     if behind condition or situational inclusions.
     """
 
+    @merge_args(Action.__init__)
     def __init__(
         self,
         name: Text,

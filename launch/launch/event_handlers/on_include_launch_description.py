@@ -14,6 +14,8 @@
 
 """Module for OnIncludeLaunchDescription class."""
 
+from merge_args import merge_args
+
 from typing import Text
 
 from ..event_handler import EventHandler
@@ -24,6 +26,7 @@ from ..utilities import is_a_subclass
 class OnIncludeLaunchDescription(EventHandler):
     """Event handler used to handle asynchronous requests to include LaunchDescriptions."""
 
+    @merge_args(EventHandler.__init__)
     def __init__(self, **kwargs):
         """Constructor."""
         from ..actions import OpaqueFunction

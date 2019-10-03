@@ -20,6 +20,8 @@ from typing import List
 from typing import Optional
 from typing import Tuple
 
+from merge_args import merge_args
+
 from .set_launch_configuration import SetLaunchConfiguration
 from ..action import Action
 from ..frontend import Entity
@@ -61,6 +63,7 @@ class IncludeLaunchDescription(Action):
     unable to see an unsatisfied argument ahead of time.
     """
 
+    @merge_args(Action.__init__)
     def __init__(
         self,
         launch_description_source: LaunchDescriptionSource,

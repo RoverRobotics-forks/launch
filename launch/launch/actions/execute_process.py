@@ -34,7 +34,7 @@ from typing import Tuple  # noqa: F401
 from typing import Union
 
 import launch.logging
-
+from merge_args import merge_args
 from osrf_pycommon.process_utils import async_execute_process
 from osrf_pycommon.process_utils import AsyncSubprocessProtocol
 
@@ -84,6 +84,7 @@ _global_process_counter = 0  # in Python3, this number is unbounded (no rollover
 class ExecuteProcess(Action):
     """Action that begins executing a process and sets up event handlers for the process."""
 
+    @merge_args(Action.__init__)
     def __init__(
         self,
         *,
@@ -544,6 +545,7 @@ class ExecuteProcess(Action):
         self.__completed_future.set_result(None)
 
     class __ProcessProtocol(AsyncSubprocessProtocol):
+        @merge_args(AsyncSubprocessProtocol.__init__)
         def __init__(
             self,
             action: 'ExecuteProcess',

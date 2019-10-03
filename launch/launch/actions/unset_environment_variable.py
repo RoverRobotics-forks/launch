@@ -18,6 +18,8 @@ import os
 
 from typing import List
 
+from merge_args import merge_args
+
 from ..action import Action
 from ..frontend import Entity
 from ..frontend import expose_action
@@ -33,6 +35,7 @@ from ..utilities import perform_substitutions
 class UnsetEnvironmentVariable(Action):
     """Action that unsets an environment variable if it is set, otherwise does nothing."""
 
+    @merge_args(Action.__init__)
     def __init__(
         self,
         name: SomeSubstitutionsType,

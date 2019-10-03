@@ -19,6 +19,7 @@ from typing import overload
 from typing import Text
 from typing import Union
 
+from merge_args import merge_args
 import launch.logging
 
 from ..action import Action
@@ -40,6 +41,7 @@ class LogInfo(Action):
         """Construct with list of Text and Substitutions."""
         ...
 
+    @merge_args(Action.__init__)
     def __init__(self, *, msg, **kwargs):  # noqa: F811
         """Constructor."""
         super().__init__(**kwargs)

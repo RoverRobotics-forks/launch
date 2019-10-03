@@ -14,6 +14,8 @@
 
 """Module for the PopLaunchConfigurations action."""
 
+from merge_args import merge_args
+
 from ..action import Action
 from ..launch_context import LaunchContext
 
@@ -25,7 +27,7 @@ class PopLaunchConfigurations(Action):
     The state can be stored initially by pushing onto the stack with the
     :py:class:`launch.actions.PushLaunchConfigurations` action.
     """
-
+    @merge_args(Action.__init__)
     def __init__(self, **kwargs) -> None:
         """Constructor."""
         super().__init__(**kwargs)

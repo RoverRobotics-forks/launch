@@ -13,6 +13,7 @@
 # limitations under the License.
 
 """Module for ProcessIO event."""
+from merge_args import merge_args
 
 from .running_process_event import RunningProcessEvent
 
@@ -22,6 +23,7 @@ class ProcessIO(RunningProcessEvent):
 
     name = 'launch.events.process.ProcessIO'
 
+    @merge_args(RunningProcessEvent.__init__)
     def __init__(self, *, text: bytes, fd: int, **kwargs) -> None:
         """
         Constructor.

@@ -13,6 +13,7 @@
 # limitations under the License.
 
 """Module for ProcessExited event."""
+from merge_args import merge_args
 
 from .running_process_event import RunningProcessEvent
 
@@ -21,7 +22,7 @@ class ProcessExited(RunningProcessEvent):
     """Event emitted when a process exits."""
 
     name = 'launch.events.process.ProcessExited'
-
+    @merge_args(RunningProcessEvent.__init__)
     def __init__(
         self,
         *,

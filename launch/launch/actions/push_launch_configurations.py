@@ -14,6 +14,8 @@
 
 """Module for the PushLaunchConfigurations action."""
 
+from merge_args import merge_args
+
 from ..action import Action
 from ..launch_context import LaunchContext
 
@@ -26,6 +28,7 @@ class PushLaunchConfigurations(Action):
     :py:class:`launch.actions.PopLaunchConfigurations` action.
     """
 
+    @merge_args(Action.__init__)
     def __init__(self, **kwargs) -> None:
         """Constructor."""
         super().__init__(**kwargs)

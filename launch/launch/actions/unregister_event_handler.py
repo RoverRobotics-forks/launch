@@ -14,6 +14,8 @@
 
 """Module for the UnregisterEventHandler action."""
 
+from merge_args import merge_args
+
 from ..action import Action
 from ..event_handler import BaseEventHandler
 from ..launch_context import LaunchContext
@@ -22,6 +24,7 @@ from ..launch_context import LaunchContext
 class UnregisterEventHandler(Action):
     """Action that unregisters an event handler."""
 
+    @merge_args(Action.__init__)
     def __init__(self, event_handler: BaseEventHandler, **kwargs) -> None:
         """Constructor."""
         super().__init__(**kwargs)

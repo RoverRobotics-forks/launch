@@ -34,6 +34,7 @@ class UnsetLaunchConfiguration(Action):
     /sa :py:class:`launch.actions.SetLaunchConfiguration`
     """
 
+    @merge_args(Action.__init__)
     def __init__(
         self,
         name: SomeSubstitutionsType,

@@ -21,6 +21,8 @@ from typing import overload
 from typing import Text
 from typing import TYPE_CHECKING
 
+from merge_args import merge_args
+
 from ..event import Event
 from ..event_handler import BaseEventHandler
 from ..events import Shutdown
@@ -49,6 +51,7 @@ class OnShutdown(BaseEventHandler):
         """Overload which takes a callable to handle the shutdown."""
         ...
 
+    @merge_args(BaseEventHandler.__init__)
     def __init__(self, *, on_shutdown, **kwargs):  # noqa: F811
         """Constructor."""
         super().__init__(

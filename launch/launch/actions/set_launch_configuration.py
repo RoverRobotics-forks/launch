@@ -16,6 +16,8 @@
 
 from typing import List
 
+from merge_args import merge_args
+
 from ..action import Action
 from ..frontend import Entity
 from ..frontend import expose_action
@@ -37,6 +39,7 @@ class SetLaunchConfiguration(Action):
     LaunchDescription's, but can be scoped with groups.
     """
 
+    @merge_args(Action.__init__)
     def __init__(
         self,
         name: SomeSubstitutionsType,

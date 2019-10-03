@@ -13,6 +13,7 @@
 # limitations under the License.
 
 """Module for ProcessStarted event."""
+from merge_args import merge_args
 
 from .running_process_event import RunningProcessEvent
 
@@ -22,6 +23,7 @@ class ProcessStarted(RunningProcessEvent):
 
     name = 'launch.events.process.ProcessStarted'
 
+    @merge_args(RunningProcessEvent.__init__)
     def __init__(self, **kwargs):
         """
         Constructor.

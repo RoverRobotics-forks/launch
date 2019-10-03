@@ -20,6 +20,8 @@ from typing import Optional
 from typing import Text
 from typing import TYPE_CHECKING
 
+from merge_args import merge_args
+
 from ..event import Event
 from ..event_handler import BaseEventHandler
 from ..events.process import ProcessIO
@@ -35,6 +37,7 @@ class OnProcessIO(BaseEventHandler):
 
     # TODO(wjwwood): make the __init__ more flexible like OnProcessExit, so
     # that it can take SomeActionsType directly or a callable that returns it.
+    @merge_args(BaseEventHandler.__init__)
     def __init__(
         self,
         *,
